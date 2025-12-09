@@ -1,0 +1,138 @@
+
+.imagenesAccesos {
+    height: 100%;
+    border-radius: 0;
+    position: relative;
+    display: -ms-flexbox;
+    display: -webkit-box;
+    display: flex;
+    -ms-flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    max-height: 260px;
+    overflow: hidden;
+}
+.imagenesAccesos h2.titulo-imagen {
+    top: 50px;
+    color: white;
+    font-size: 1.6em;
+    text-align: center;
+    width: 80%;
+    margin: 18% auto;
+
+}
+
+.imagenesAccesos h2.titulo-imagen:after {
+    content: '';
+    display: block;
+    height: 3px;
+    width: 55px;
+    background-color: white;
+    margin: 20px auto;
+
+}
+
+.imagenesAccesos a.linkImagen {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: white;
+    font-size: 0.8em;
+    text-align: right;
+    margin: auto;
+    text-decoration: underline;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+
+}
+
+.imagenesAccesos .overlayImagen {
+    background-color: rgba(0,0,0,0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 0;
+}
+
+.main .section .bg-negro .sectionTitle  h2,
+.main .section .bg-negro p{
+  color: #fff;
+}
+
+@media (min-width: 800px){
+
+
+    .np-fondo-widget .sectionContenedor .izquierda, .np-fondo-widget .sectionContenedor .derecha {
+        width: 50%!important;
+    }
+    .np-widget-img.image.derecha {
+      right: 0;
+    }
+    .np-widget-img.image.izquierda {
+      left: 0;
+    }
+    .np-fondo-widget {
+      position: relative;
+      overflow: hidden;
+      min-height: 350px;
+    }
+    .np-widget-img {
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+    }
+    .np-fondo-widget .container {
+      position: relative;
+    }
+    .np-widget-img img {
+      width: auto;
+      float: right;
+      margin-left: -50%;
+      min-height: 100%;
+      min-width: 150%;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 990px){
+
+    .np-widget-img img {
+      min-width: 200%;
+    }
+}
+
+
+@media (min-width: 991px) and (max-width: 1200px){
+
+    .np-widget-img img {
+      width: 100%;
+      min-width: 180%;
+    }
+}
+
+@media (min-width: 1201px){
+
+    .np-widget-img img {
+      min-width: 100%;
+      margin-left: 0;
+    }
+}
+
+
+
+
+
+
+
+

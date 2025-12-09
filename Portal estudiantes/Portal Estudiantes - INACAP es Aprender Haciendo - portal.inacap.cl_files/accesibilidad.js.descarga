@@ -1,0 +1,141 @@
+$(document).ready(function(){
+ $('a').addClass('letra');
+ $('h1').addClass('letra');
+ $('h2').addClass('letra');
+ $('h3').addClass('letra');
+ $('h4').addClass('letra');
+ // $('ul').addClass('letra');
+ $('p').addClass('letra');
+ $('a').addClass('navigation');
+ $('button').addClass('navigation');
+ 
+});
+
+	$("#foto").click(function(){
+		$(".acces").toggleClass("grises");
+    $(".blanco").toggleClass("backg");
+	});
+
+	$("#contraste").click(function(){
+		$(".acces").toggleClass("fondoc");
+		$(".blanco").toggleClass("backg");
+    $(".letra").toggleClass("black");
+
+    $(".footer a").removeClass("black");
+    $(".logoInacap p").removeClass("black");
+
+    $(".perc-slide-caption-container p:nth-child(1)").removeClass("black").addClass("white");
+    // $(".np-menu-accesibility a").removeClass("white").addClass("black");
+    // $(".np-menu-user a").removeClass("white").addClass("black");
+    $(".fondoc .navbar-nav .nav-link").removeClass("black").addClass("white");
+    $(".fondoc .navbar-nav .dropdown-menu .nav-link").removeClass("white").addClass("black");
+    $(".fondoc .navbar-nav .np-nav-link-cft .np-drop-submenu .dropdown-item").removeClass("black").addClass("white");
+    $(".fondoc .navbar-nav .np-nav-link-ip .np-drop-submenu .dropdown-item").removeClass("black").addClass("white");
+
+    $(".fondoc .navbar-nav .nav-link.icon-user").removeClass("black").addClass("white");
+
+    /* menu mobile */
+    $(".fondoc .np-nav-mobile").addClass("bg-oscuro");
+    $(".fondoc .navbar-nav .np-menutop-mobile").addClass("bg-oscuro");
+    $(".fondoc .navbar-nav .np-menu-bottom-mobile li").addClass("bg-oscuro");
+    $(".fondoc .navbar-nav .np-menu-bottom-mobile .dropdown-menu li a").removeClass("black").addClass("white");
+    $(".fondoc .navbar-nav .np-menu-intranet.dropdown-menu .nav-link").removeClass("white").addClass("black");
+    // $(".fondoc .navbar-nav .np-menu-sds.dropdown-menu .nav-link").removeClass("white").addClass("black");
+
+    /* home */
+    $(".fondoc .perc-page-auto-list#eventos .perc-list-main-wrapper ul.perc-list-main > li > a").removeClass("black").addClass("white");
+    $(".fondoc p.texto-destacado-slider").addClass("white").removeClass("black");
+
+
+    $(".np-menu a").removeClass("black").toggleClass("white");
+    $(".tres-no-instituciones h2").removeClass("black").addClass("white");
+    $(".tres-no-instituciones p").removeClass("black").addClass("white");
+    $(".tres-no-instituciones a").removeClass("black").addClass("white");
+
+    $(".destacados-full h3").removeClass("black").addClass("white");
+    $(".destacados-full p").removeClass("black").addClass("white");
+    $(".destacados-full a").removeClass("white").addClass("black");
+    $("a.icon-social").removeClass("black").addClass("white");
+    $("a.icon-accesibility").removeClass("black").addClass("white");
+
+    $(".btn-amarillo").removeClass("black").addClass("white");
+    $(".bg-oscuro h3").removeClass("black").addClass("white");
+    $(".bg-instituciones h4").removeClass("black").addClass("white");
+    $(".bg-oscuro p").removeClass("black").addClass("white");
+    $(".bg-oscuro a").removeClass("black").addClass("white");
+    $(".bg-oscuro li").removeClass("black").addClass("white");
+
+    $(".np-navbar-brand").toggleClass("logo-blanco");
+    $(".np-navbar-brand-mobile").toggleClass("logo-blanco");
+
+    $(".breadcrumb a").toggleClass("navigation");
+    // $(".np-navbar-brand").toggleClass("logo-blanco");
+  });
+
+
+	 //  // reset
+  //    var originalSize = $('p').css('font-size');
+  //   $(".resetMe").click(function(){
+  //     $('p').css('font-size', originalSize);
+  //     $('h2').css('font-size', originalSize); 
+  //     $('h3').css('font-size', originalSize); 
+
+  //  });
+
+  //  // Increase Font Size
+  //  $(".increase").click(function(){
+  // var currentSize = $('p').css('font-size');
+  // var currentSize = parseFloat(currentSize)*1.2;
+  // $('p').css('font-size', currentSize);
+
+  // return false;
+  //  });
+
+  //  // Decrease Font Size
+  //  $(".decrease").click(function(){
+  // var currentFontSize = $('p').css('font-size');
+  // var currentSize = $('p').css('font-size');
+  // var currentSize = parseFloat(currentSize)*0.2;
+  // $('p').css('font-size', currentSize);
+
+  // return false;
+  //  });
+
+
+var $affectedElements = $("p, a, h1, h2, h3, h4, h5, h6, button"); // Tambien pueden agregarse ej. $("div, p, span.someClass")
+
+// Almacena la medida original en un data atribute (orig-size) asi puede ser reseteada
+$affectedElements.each( function(){
+  var $this = $(this);
+  $this.data("orig-size", $this.css("font-size") );
+});
+
+$(".increase").click(function(){
+  changeFontSize(1);
+});
+
+$(".decrease").click(function(){
+  changeFontSize(-1);
+});
+
+$(".resetMe").click(function(){
+  $affectedElements.each( function(){
+        var $this = $(this);
+        $this.css( "font-size" , $this.data("orig-size") );
+   });
+});
+
+function changeFontSize(direction){
+    $affectedElements.each( function(){
+        var $this = $(this);
+        $this.css( "font-size" , parseInt($this.css("font-size"))+direction );
+    });
+}
+   
+  $('#navigation').click(function() {
+  
+  // this makes the one that was clicked underlined
+    $('.navigation').toggleClass('currentlyActive');
+  });
+ 
+ 

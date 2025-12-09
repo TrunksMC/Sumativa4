@@ -1,0 +1,49 @@
+
+
+
+$(document).ready(function(){
+
+
+
+   $('.inacapNpBotonesQuad .col-12').each(function (i, element) {
+      
+      var text = $('a', this).text();//.replace(/[\n\t]/g,'');
+      var img = $('img', this);
+      var src = img.attr('src');
+
+      if(text == '') {
+         $(this).addClass('d-none')
+      } else {
+         $(this).addClass('existe_contenido');
+      }
+
+      if(src == '#') {
+         img.addClass('d-none')
+      } else {
+         img.addClass('existe_contenido');
+      }
+
+   });
+
+   $('.inacaoNpBotonesQuad .col-12').each(function (i, element) {
+      
+      var text = $('a', this).text();//.replace(/[\n\t]/g,'');
+      var img = $('img', this);
+      var src = img.attr('src');
+
+      if(text == '') {
+         $(this).addClass('d-none')
+      } else {
+         $(this).addClass('existe_contenido');
+      }
+
+      if(src == '#') {
+         img.addClass('d-none')
+      } else {
+         img.addClass('existe_contenido');
+      }
+
+   });
+
+});
+

@@ -1,0 +1,486 @@
+/*@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');*/
+
+/*FONTS*/
+/*Roboto*/
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Regular.eot');
+    src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Regular.eot?#iefix') format('embedded-opentype'),
+         url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Regular.woff') format('woff'),
+         url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Roboto-Light';
+    src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Light.eot');
+    src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Light?#iefix') format('embedded-opentype'),
+         url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Light.woff') format('woff'),
+         url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Light.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Bold.eot');
+    src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Bold.eot?#iefix') format('embedded-opentype'),
+         url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Bold.woff') format('woff'),
+         url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Italic';
+    src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Italic.eot');
+    src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Italic.eot?#iefix') format('embedded-opentype'),
+         url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Italic.woff') format('woff'),
+         url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Roboto/Roboto-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*Material-Icons*/
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  /*src: url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/MaterialIcons-Regular.eot); For IE6-8 */
+  src: local('https://digital.inacap.cl/recursos/inacap-liferay/fonts/Material Icons'),
+       local('https://digital.inacap.cl/recursos/inacap-liferay/fonts/MaterialIcons-Regular'),
+       url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/MaterialIcons-Regular.woff2) format('woff2'),
+       url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/fonts/MaterialIcons-Regular.woff) format('woff'),
+       url('https://digital.inacap.cl/recursos/inacap-liferay/fonts/fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 1em;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased; /* Support for all WebKit browsers. */
+  text-rendering: optimizeLegibility; /* Support for Safari and Chrome. */
+  -moz-osx-font-smoothing: grayscale; /* Support for Firefox. */
+  font-feature-settings: 'liga'; /* Support for IE. */
+}
+
+
+/* .roboto-thin {
+	font-family: "Roboto", sans-serif;
+	font-weight: 100;
+	font-style: normal;
+  }
+  
+  .roboto-thin-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 100;
+	font-style: italic;
+  } */
+  
+  .Roboto-Light {
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
+	font-style: normal;
+  }
+  
+/*   .roboto-light-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 300;
+	font-style: italic;
+  } */
+  
+  .Roboto-Regular {
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+  }
+  
+ /*  .roboto-regular-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 400;
+	font-style: italic;
+  } 
+  
+  .roboto-medium {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-style: normal;
+  }
+  
+  .roboto-medium-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-style: italic;
+  }*/
+  
+  .Roboto-Bold {
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+  }
+  
+/*   .roboto-bold-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 700;
+	font-style: italic;
+  }
+  
+  .roboto-black {
+	font-family: "Roboto", sans-serif;
+	font-weight: 900;
+	font-style: normal;
+  }
+  
+  .roboto-black-italic {
+	font-family: "Roboto", sans-serif;
+	font-weight: 900;
+	font-style: italic;
+  } */
+  
+
+.np-footer{
+	background-color: #1E1E1E;
+	color: #fff;
+	position: relative;
+    font-size: 14px;
+    clear:left;
+}
+.np-footer .col-md-3{
+	border-right: 1px solid #f2f2f2;
+}
+.np-footer .col-md-3:last-child{
+	border: none;
+}
+.logo-footer{
+	width: auto;
+	height: 35px;
+}
+.np-footer h3{
+	font-size: 1rem;
+	font-family: "Roboto-Bold", sans-serif;
+	font-weight: 700;
+	font-style: normal;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+.np-footer a{
+	color: #F2F2F2;
+	font-size: .875rem;
+	font-family: "Roboto-Regular", sans-serif;
+	font-weight: 400;
+	font-style: normal;
+}
+.np-footer ul{
+	padding: 0;
+	list-style: none;
+}
+.np-footer img{
+	max-height: 80px;
+	width: auto;	
+}
+.np-footer ul li{
+	margin-bottom: 10px;
+}
+.separator{
+	width: 100%;
+	height: 1px;
+	background-color: #f2f2f2;
+}
+.text-underline{
+	text-decoration: underline;
+}
+
+/* 
+.np-footer > div {
+	max-width: 1200px;
+	padding-bottom: 20px;
+	margin: 0 auto;
+}
+
+.np-footer .redes-sociales {
+	width: 100%;
+	background-color: #cc0000;
+	height: 44px;
+	z-index:10;
+}
+
+.np-footer .redes-sociales ul {
+	width: 100%;
+	display: block;
+	list-style: none;
+	padding: 10px 0;
+	overflow: hidden;
+	margin: 0 !important;
+}
+.np-footer .redes-sociales ul li {
+	float: left;
+	width: 20%;
+	height: 24px;
+	box-sizing: border-box;
+	border-right: 1px solid rgba(255,255,255,0.3)
+}
+.np-footer .redes-sociales ul li:last-child {border:none;}
+
+.np-footer .redes-sociales ul li a {
+	width: 24px;
+	height: 24px;
+	display: block;
+	margin: 0 auto;
+	background-repeat: no-repeat;
+	background-size: 100%;
+	background-position: center center;
+}
+.np-footer .redes-sociales ul li a.facebook  {background-image: url(/web_resources/themes/portal/rrss/fb-blanco.png);}
+.np-footer .redes-sociales ul li a.youtube   {background-image: url(/web_resources/themes/portal/rrss/yt-blanco.png);}
+.np-footer .redes-sociales ul li a.twitter   {background-image: url(/web_resources/themes/portal/rrss/tw-blanco.png);}
+.np-footer .redes-sociales ul li a.linkedin  {background-image: url(/web_resources/themes/portal/rrss/in-blanco.png);}
+.np-footer .redes-sociales ul li a.instagram {background-image: url(/web_resources/themes/portal/rrss/ig-blanco.png);}
+
+.np-footer-noticias .contenidoFooter,
+.np-footer .logos {
+	overflow: hidden;
+	padding: 0 15px;
+}
+.np-footer .contenidoFooter .texto {
+	width: 100%;
+	padding: 10px 20px;
+	box-sizing: border-box;
+	text-align: center;
+}
+.np-footer .contenidoFooter ul {
+	list-style: none;
+	padding-left: 0;
+	margin: 0;
+}
+.np-footer .contenidoFooter ul li {padding: 5px 0;position: relative; color:#fff;}
+.np-footer .contenidoFooter ul li a{color:#fff!important;text-decoration: underline;}
+.np-footer .contenidoFooter ul li i {margin-right: 5px; color:#FF575F;}
+
+.np-footer .contenidoFooter .toggleFooter,  .np-footer .contenidoFooter .classicView{
+	display: block;
+	background-color: #DBDBDB;
+	color: #3A2F2C;
+	width: 100%;
+	padding: 10px 15px;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.np-footer .contenidoFooter .classicView{
+	background-color: #fff;
+}
+
+.np-footer .contenidoFooter .toggleFooter:after {
+	content:"\E313";
+	font-family: 'Material Icons';
+	position: absolute;
+	right:15px;
+}
+.np-footer .contenidoFooter .menuFooter {
+	max-height: 100%;
+	overflow: hidden;
+	transition: max-height 0.3s ease-out;
+	padding: 0 15px;
+    font-weight: 600;
+}
+.np-footer .contenidoFooter.active .toggleFooter:after {content:"\E316";}
+
+.np-footer .contenidoFooter.active .menuFooter {max-height:430px;}
+
+.np-footer .contenidoFooter .menuFooter ul:first-child {padding-bottom:5px;border-bottom: 1px solid rgba(0,0,0,0.05);}
+
+.np-footer .contenidoFooter .menuFooter ul.column:first-child {padding-top:15px; margin-bottom: 10px; border-bottom: 2px solid #fff;}
+
+.np-footer .contenidoFooter .menuFooter ul.column:first-child li:last-child {padding-bottom: 20px;}
+
+.np-footer .contenidoFooter .menuFooter ul li ul.verificacionDocumentos {padding-top: 5px;}
+
+.np-footer .contenidoFooter .menuFooter ul li .bullet {font-size: 10px;color: #fff; padding-right: 5px;}
+
+.np-footer .contenidoFooter .texto ul li a i {color: #cc0000;}	
+
+.np-footer .logos .logosAcreditacion {
+	margin-top: 20px;
+	overflow: hidden;
+}
+.np-footer .logos .logosAcreditacion > div {
+	background-size: 100%;
+	background-repeat: no-repeat;
+}
+.np-footer .logos .logosAcreditacion .iso {
+	width: 28%;
+	height: 80px;
+	float:left;
+	max-width: 115px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+	margin-right: 3%;
+	background-image: url(https://digital.inacap.cl/recursos/prueba-noticias/img/iso9001-2015.png);
+}
+
+.np-footer .logos .logosAcreditacion .vertebral {
+	width: 28%;
+	height: 80px;
+	float:left;
+	margin-right: 3%;
+	background-image: url(https://digital.inacap.cl/recursos/prueba-noticias/img/vertebral.png)!important;
+}
+.np-footer .logos .logosAcreditacion .cnca {
+	width: 22%;
+	height: 80px;
+	float:left;
+	margin-right: 3%;
+	background-image: url(https://digital.inacap.cl/recursos/prueba-noticias/img/cnca.png)!important;
+}
+.np-footer .logos .logosAcreditacion .acreditacionCFT {
+	width: 44%;
+	height: 80px;
+	float:left;
+	background-image: url(https://digital.inacap.cl/recursos/prueba-noticias/img/cft-transparente.png)!important;
+}
+.np-footer .logos .logosAcreditacion .acreditacionIP {
+	width: 46%;
+	height: 80px;
+	float:left;
+	margin-right: 4%;
+	background-image: url(https://digital.inacap.cl/recursos/prueba-noticias/img/ip-transparente.png)!important;
+}
+.np-footer .logos .logosAcreditacion .acreditacionU {
+	width: 50%;
+	height: 80px;
+	float:left;
+	background-image: url(https://digital.inacap.cl/acreditacion/logos/univ-transparente.png)!important;
+}
+.np-footer .logos .logoInacap {
+	width: 200px;
+	height: 0 !important;
+	margin:0 auto;
+	background: url(https://digital.inacap.cl/recursos/prueba-noticias/img/logoFooter.png) no-repeat!important;
+	background-size: 100%!important;
+	padding-top: 54px;
+    font-size: 10px;
+	text-transform: uppercase;
+	margin-top: 25px!important;
+}
+.np-footer .logos .logoInacap p {margin:0;}
+
+.np-footer .contenidoFooter .menuFooter ul.column:first-child a{text-decoration: none;}
+
+.logoInacap{display:none;}
+
+@media (min-width: 420px) {
+	.np-footer .logos .logosAcreditacion .acreditacionCFT {width: 40%;}
+	.np-footer .logos .logosAcreditacion .acreditacionIP {width: 40%;}
+	.np-footer .logos .logosAcreditacion .acreditacionU {width: 42%;}
+	.np-footer .logos .logosAcreditacion .cnca {width: 20%;}
+    .logoInacap{display:block;}
+}
+
+@media (min-width: 510px) {
+	.np-footer .logos .logosAcreditacion .acreditacionCFT {width: 32%;}
+	.np-footer .logos .logosAcreditacion .acreditacionIP {width: 34%;}
+	.np-footer .logos .logosAcreditacion .acreditacionU {width: 36%;}
+	.np-footer .logos .logosAcreditacion .cnca {width: 18%;}
+}
+
+@media (min-width: 570px) {
+	.np-footer .logos .logosAcreditacion .acreditacionCFT {width: 24%;}
+	.np-footer .logos .logosAcreditacion .acreditacionIP {width: 24%;}
+	.np-footer .logos .logosAcreditacion .acreditacionU {width: 26%;}
+	.np-footer .logos .logosAcreditacion .cnca {width: 12%;}
+	.np-footer .logos .logosAcreditacion .vertebral {width: 22%;}
+}
+
+@media (min-width: 768px){
+	.np-footer {position: relative;}
+	.np-footer .contenidoFooter .menuFooter,
+	.np-footer-noticias .contenidoFooter,
+	.np-footer .logos {
+		padding: 0 30px;
+	}
+	.np-footer .contenidoFooter .texto,
+	.np-footer .logos .logosAcreditacion {
+		width: 60%;
+		float: right;
+	}
+	.np-footer .contenidoFooter .texto {
+		padding: 0;
+		text-align: right;
+	}
+
+	.np-footer .contenidoFooter .texto p {margin-bottom: 5px;}
+	.np-footer .contenidoFooter .texto ul li {
+		width: 50%;
+		float: left;
+	}
+
+	.np-footer .contenidoFooter .menuFooter {
+		max-height:400px;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.np-footer .contenidoFooter .menuFooter ul.column {
+		width: 22%;
+		float: left;
+	}
+	.np-footer .contenidoFooter .menuFooter ul.column:first-child {
+		width: 34%;
+	}
+	.np-footer .contenidoFooter .menuFooter ul:first-child {border:none;}
+
+	.np-footer .contenidoFooter .toggleFooter, .np-footer .contenidoFooter .classicView {display: none;}
+
+	.np-footer .logos .logosAcreditacion > div {
+		width: 20% !important;
+        margin: 0 2% 0 0 !important;
+	}
+	.np-footer .logos .logosAcreditacion > div:last-child {
+		margin-right: 0 !important;
+	}
+	.np-footer .logos .logosAcreditacion .cnca {
+		width: 12% !important;
+	}
+	.np-footer .logos .logoInacap {
+		width: 180px;
+		margin: 0;
+	}
+	.np-footer.np-footer-noticias .logos .logoInacap {
+		position: absolute;
+		top: 70px;
+	}
+    .np-footer .contenidoFooter .menuFooter ul.column:first-child {padding-top:0px; margin-bottom: 10px; border-bottom: 1px solid rgba(0,0,0,0.00);}
+}
+
+@media (min-width: 990px){
+	.np-footer .contenidoFooter .texto {padding-top: 40px;padding-bottom: 10px;}
+	.np-footer .contenidoFooter .texto p {float: left;width: 45%;margin-top: 5px;}
+	.np-footer .contenidoFooter .texto ul {float: left;width: 55%;}
+}
+
+@media (min-width: 1200px){
+	/*.np-footer {border-top: 44px solid #cc0000;}
+	.np-footer .redes-sociales {
+		position: absolute;
+	    top: -44px;
+	    width: 1200px;
+	}
+	.np-footer .contenidoFooter,
+	.np-footer .logos {padding: 0;}
+	.np-footer .contenidoFooter .menuFooter {padding-left: 0;padding-right: 0;}
+}
+@media (max-width: 990px){
+    .np-footer .logos .logoInacap {display: none;}
+}
+ */

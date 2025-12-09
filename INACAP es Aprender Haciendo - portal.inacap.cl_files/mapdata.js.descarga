@@ -1,0 +1,263 @@
+var simplemaps_countrymap_mapdata={
+  main_settings: {
+    //General settings
+		width: "responsive", //or 'responsive'
+    background_color: "#FFFFFF",
+    background_transparent: "yes",
+    popups: "detect",
+    popup_nocss: 'yes',
+    
+		//State defaults
+		state_description: "State description",
+    state_color: "#4D4D4D",
+    state_hover_color: "#ca0000",
+    state_url: "https://www.inacap.cl",
+    border_size: 1.5,
+    border_color: "#ffffff",
+    all_states_inactive: "no",
+    all_states_zoomable: "no",
+    
+		//Location defaults
+		location_description: "Location description",
+    location_color: "#FF0067",
+    location_opacity: 0.8,
+    location_hover_opacity: 1,
+    location_url: "",
+    location_size: 25,
+    location_type: "square",
+    location_border_color: "#FFFFFF",
+    location_border: 2,
+    location_hover_border: 2.5,
+    all_locations_inactive: "no",
+    all_locations_hidden: "no",
+    
+		//Label defaults
+		label_color: "#ffffff",
+    label_hover_color: "#ffffff",
+    label_size: 22,
+    label_font: "Arial",
+    hide_labels: "no",
+    hide_eastern_labels: false,
+   
+		//Zoom settings
+		manual_zoom: "yes",
+    back_image: "no",
+    arrow_box: "no",
+    navigation_size: "40",
+    navigation_color: "#f7f7f7",
+    navigation_border_color: "#636363",
+    initial_back: "no",
+    initial_zoom: -1,
+    initial_zoom_solo: "no",
+    region_opacity: 1,
+    region_hover_opacity: 0.6,
+    zoom_out_incrementally: "yes",
+    zoom_percentage: 0.99,
+    zoom_time: 0.5,
+    
+		//Popup settings
+		popup_color: "white",
+    popup_opacity: 0.9,
+    popup_shadow: 1,
+    popup_corners: 5,
+    popup_font: "12px/1.5 Verdana, Arial, Helvetica, sans-serif",
+    popup_nocss: "no",
+    
+		//Advanced settings
+		div: "map",
+    auto_load: "yes",
+    rotate: "0",
+    url_new_tab: "yes",
+    images_directory: "default",
+    import_labels: "no",
+    fade_time: 0.1,
+    link_text: "View Website"
+  },
+  state_specific: {
+    CLAI: {
+     name: "Aysén",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Aysén</li><li>Centro de Negocios Sercotec</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLAN: {
+      name: "Antofagasta",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Antofagasta</li><li>Centro de Negocios Sercotec</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLAP: {
+      name: "Arica",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Arica y Parinacota</li><li>Crea Empresa</li><li>Centro de Negocios Sercotec</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLAR: {
+      name: "La Araucanía",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de La Araucanía</li><li>Crea Empresa</li><li>Centro de Negocios Sercotec</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLAT: {
+      name: "Copiapó",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Atacama</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLBI: {
+      name: "Bío-Bío",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional del Biobío</li><li>Crea Empresa</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLCO: {
+      name: "Coquimbo",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Coquimbo</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLLI: {
+      name: "Libertador General Bernardo O'Higgins",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de O'Higgins</li><li>Crea Empresas</li><li>Centro de Negocios Sercotec</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLLL: {
+      name: "Los Lagos",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Osorno</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLLR: {
+      name: "Los Ríos",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Los Ríos</li><li>Consejo Productivo Regional de Puerto Montt</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLMA: {
+      name: "Magallanes y Antártica Chilena",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Magallanes</li><li>Centro de Negocios Sercotec</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLML: {
+      name: "Maule",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional del Maule</li><li>Centro de Negocios Sercotec</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLNB: {
+      name: "Ñuble",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Ñuble y Los Ángeles</li><li>Crea Empresas</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLRM: {
+      name: "Región Metropolitana de Santiago",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional Norponiente y Suroriente</li><li>Crea Empresas</li><li>Centro de Negocios Sercotec</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLTA: {
+      name: "Tarapacá",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Consejo Productivo Regional de Tarapacá</li><li>Crea Empresa</li><li>FabLab</li><li>FabLab</li><li>Fábrica 4.0</li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    },
+    CLVS: {
+      name: "Valparaíso",
+      description: "<ul style=\"width: 175px\"; float: left;><li>Crea Empresas</li><li>Consejo Productivo Regional Valparaíso </li></ul>",
+      color: "default",
+      hover_color: "default",
+      url: "default"
+    }
+  },
+/*  locations: {
+    "0": {
+      name: "Santiago",
+      lat: "-33.45",
+      lng: "-70.666667"
+    }
+  },*/
+  labels: {
+   /*  CLAI: {
+      name: "Aisén del General Carlos Ibáñez del Campo",
+      parent_id: "CLAI"
+    },
+    CLAN: {
+      name: "Antofagasta",
+      parent_id: "CLAN"
+    },
+    CLAP: {
+      name: "Arica y Parinacota",
+      parent_id: "CLAP"
+    },
+    CLAR: {
+      name: "La Araucanía",
+      parent_id: "CLAR"
+    },
+    CLAT: {
+      name: "Atacama",
+      parent_id: "CLAT"
+    },
+    CLBI: {
+      name: "Bío-Bío",
+      parent_id: "CLBI"
+    },
+    CLCO: {
+      name: "Coquimbo",
+      parent_id: "CLCO"
+    },
+    CLLI: {
+      name: "Libertador General Bernardo O'Higgins",
+      parent_id: "CLLI"
+    },
+    CLLL: {
+      name: "Los Lagos",
+      parent_id: "CLLL"
+    },
+    CLLR: {
+      name: "Los Ríos",
+      parent_id: "CLLR"
+    },
+    CLMA: {
+      name: "Magallanes y Antártica Chilena",
+      parent_id: "CLMA"
+    },
+    CLML: {
+      name: "Maule",
+      parent_id: "CLML"
+    },
+    CLNB: {
+      name: "Ñuble",
+      parent_id: "CLNB"
+    },
+    CLRM: {
+      name: "Región Metropolitana de Santiago",
+      parent_id: "CLRM"
+    },
+    CLTA: {
+      name: "Tarapacá",
+      parent_id: "CLTA"
+    },
+    CLVS: {
+      name: "Valparaíso",
+      parent_id: "CLVS"
+    } */
+  }
+};

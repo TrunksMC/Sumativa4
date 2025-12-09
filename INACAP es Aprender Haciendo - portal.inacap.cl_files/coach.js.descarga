@@ -1,0 +1,38 @@
+// JavaScript Document
+(function (w, d, o, js, fjs) {
+    w[o] = w[o] || function () { (w[o].q = w[o].q || []).push(arguments); };
+    js = d.createElement('script'); js.id = o;
+    js.async = true; js.type = 'text/javascript'; js.charset = 'utf-8';
+    js.src = 'https://digital.inacap.cl/recursos/coach-widget/widget.min.js';
+    fjs = d.getElementsByTagName('script')[0];
+    fjs.parentNode.insertBefore(js, fjs);
+})(window, document, 'aicareercoach');
+
+aicareercoach('init', 'KxeNYagE.Nl9keyC0P8QNTzKRWLf91wDXG06NcwfT',
+    {
+        styles: {
+            mainColor: '#A20B1B',
+            secondaryColor: '#ffffff',
+            userColor: '#66bb6a'
+        },
+        content: {
+            bubbleText: 'Chat Vocacional IA',
+            bubbleAvatarUrl: 'https://digital.inacap.cl/recursos/logos-inacap/casita-inacap-blanca.png',
+            coverTitle: 'Chat Vocacional IA: Tu asesor profesional con IA',
+            coverSubtitle: 'Una herramienta impulsada por inteligencia artificial que brinda orientación profesional personalizada, disponible 24/7. El Chat Vocacional IA ayuda a las personas a explorar carreras y todo lo necesario para que tomes una decisión informada.',
+            chatHeaderAvatarUrl: 'https://digital.inacap.cl/template-aplicaciones/img/isotipo.png',
+            chatMessageAvatarUrl: 'https://digital.inacap.cl/recursos/logos-inacap/casita-inacap-blanca.png',
+            logoUrl: 'https://digital.inacap.cl/template-aplicaciones/img/logo-inacap-blanco.png',
+            brandLogoUrl: 'https://digital.inacap.cl/template-aplicaciones/img/logo-inacap-blanco.png',
+            partnerLogoUrl: 'https://digital.inacap.cl/template-aplicaciones/img/logo-inacap-blanco.png'
+        }
+    });
+
+$(document).ready(function () {
+    setTimeout(() => {
+        const avatar = $('#widget-aicareercoach').find('[data-cy="aicareercoach-widget-header-avatar"]')[0];
+        if (avatar) {
+            avatar.style.backgroundColor = "transparent";
+        }
+    }, 1000);
+});

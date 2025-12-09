@@ -1,0 +1,131 @@
+
+function getdetalle_carreras(carr_ccod, carr, areaccod, codurl) {
+
+	/* if($('a').text() == 'Aranceles'){
+		$('a').attr('id', 'arancelesnb'); 
+		$('a').addClass('tablinks'); 
+		$('a').attr('onClick', 'openCity(event, \'Aranceles\')'); 
+		
+	} */
+	
+		
+
+	var acc = $('.inacapButton').find('a[href="#fup"]').text();
+	if (acc == 'Aranceles') {
+		$('a[href="#fup"]').attr('id', 'arancelesnb');
+		$('a[href="#fup"]').addClass('tablinks');
+		$('a[href="#fup"]').attr('onClick', 'openCity(event, \'Aranceles\')');
+	} 
+
+	$("#arancelesnb").click(function () {
+		$("#aranceles").addClass('active');
+	});
+
+
+	if (codurl == 1) {
+		var urlss = 'https://intranet.desa.inacap.cl';
+		var urlsiga3 = 'https://siga3.desa.inacap.cl';
+	} else if (codurl == 2) {
+		var urlss = 'https://intranet.test.inacap.cl';
+		var urlsiga3 = 'https://siga3.test.inacap.cl';
+	} else if (codurl == 3) {
+		var urlss = 'https://intranet.inacap.cl';
+		var urlsiga3 = 'https://siga3.inacap.cl';
+	}
+
+
+	//alert('"'+urlsiga3+'/fup1.5/ofertas/contenidoCarrerasPorArea.asp?CodCarrera='+carr+'&amp;CodEspecialidad='+carr_ccod+'&amp;o[0][sede_ccod]=0"');
+
+	$.getJSON(urlss + '/tportalvp/aplicaciones/oa/WidgetsOA/data/carreras/' + carr_ccod + '.json', function (data) {
+		$detallecarreras = $("#datocarrera");
+		var text = "";
+		// alert(data['nombre']);
+		//if (data['nombre'].length > 0) {
+		text += '<div class="np-contenedor-accordion">';
+		text += '<div class="contenido-accordion" id="descripcion">';
+		text += '<div>';
+		text += '<button class="accordion active">DescripciÃ³n de la carrera</button>';
+		text += '<div class="panel">';
+		text += '<div class="interior-panel">';
+		text += data['descripcion'];
+		text += '</div>';
+		text += '</div>';
+		
+		text += '</div>';
+		text += '</div>';
+		text += '<div class="contenido-accordion" id="perfil-egreso">';
+		text += '<div>';
+		text += '<button class="accordion active">Perfil de Egreso</button>';
+		text += '<div class="panel">';
+		text += '<div class="interior-panel">';
+		text += data['perfil'];
+		text += '</div>';
+		text += '</div>';
+		text += '</div>';
+		text += '</div>';
+		text += '<div class="contenido-accordion" id="campo-ocupacional">';
+		text += '<div>';
+		text += '<button class="accordion active">Campo Ocupacional</button>';
+		text += '<div class="panel">';
+		text += '<div class="interior-panel">';
+		text += data['campo'];
+		text += '</div>';
+		text += '</div>';
+		text += '</div>';
+		text += '</div>';
+		text += '<div class="contenido-accordion" id="aranceles">';
+		text += '<div>';
+		text += '<button class="accordion active">Aranceles</button>';
+		text += '<div class="panel">';
+		text += '<div class="interior-panel">';
+		text += '<iframe id="wid" name="wid" scrolling="NO"';
+		text += 'src="'+urlsiga3+'/fup1.5/ofertas/contenidoCarrerasPorArea.asp?txtofertas=&amp;txtpagina=&amp;CodCarrera='+carr+'&amp;CodEspecialidad='+carr_ccod+'&amp;o[0][sede_ccod]=0"';
+		text += 'width="100%" height="400" frameborder="0">Alternate iframe text</iframe>';
+		text += '<div class="sello"><img';
+		text += 'src="'+data['imagen']+'"';
+		text += 'style="padding-top: 30px;"></div>';
+		text += '</div>';
+		text += '</div>';
+		text += '</div>';
+		text += '</div>';
+
+		text +='<div class="contenido-accordion" id="sedes-imparten-carrera">';
+		text +='<div>';
+		text +='<button class="accordion active">Sedes que Imparten la Carrera</button>';
+		text +='<div class="panel" id ="otrasareas">';
+		text +='</div>';
+		text +='<script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>';
+		text +='<script>';
+		text +='$(document).ready(function(){';	
+				text +='$.get("'+urlss+'/tportalvp/aplicaciones/widgets_areas/widgetcarreras.php?idarea='+areaccod+'&idcarr='+carr+'&carrccod='+carr_ccod+'-'+carr+'", function(respuesta){';
+				text +='	$("#otrasareas").html(respuesta);';
+				text +='}); ';
+		text +='});';
+		text +='</script>';
+		text +='</div>';
+		text +='</div>';
+		text += '</div>';
+				
+		text += '<script>';
+		text += '$( document ).ready(function() {';
+		text += 'var acc = document.getElementsByClassName("accordion");';
+		text += 'var i;';
+		text += 'for (i = 0; i < acc.length; i++) {';
+		text += 'acc[i].addEventListener("click", function() {';
+		text += 'this.classList.toggle("active");';
+		text += 'var panel = this.nextElementSibling;';
+		text += 'if (panel.style.maxHeight){';
+		text += 'panel.style.maxHeight = null;';
+		text += '} else {';
+		text += 'panel.style.maxHeight = panel.scrollHeight + "px";';
+		text += '}';
+		text += '});';
+		text += '}';
+		text += '});';
+		text += '</script>';
+
+		$detallecarreras.append(text);
+		//}
+	});
+}
+// JavaScript Document

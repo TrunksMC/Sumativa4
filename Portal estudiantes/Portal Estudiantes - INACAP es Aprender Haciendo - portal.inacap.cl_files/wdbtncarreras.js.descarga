@@ -1,0 +1,38 @@
+function getbtncarreras(carr_ccod, codurl){
+	  //$.getJSON(document.location.hostname+'/aplicaciones/oa/WidgetsOA/data/carreras/'+carr_ccod+'.json', function(data) {
+	  switch (codurl) {
+		case 1:
+		var urlss = 'https://intranet.desa.inacap.cl';
+		break;
+		case 2:
+		var urlss = 'https://intranet.test.inacap.cl';
+		break;
+		case 3:
+		var urlss = 'https://intranet.inacap.cl';
+		break;
+	  }	
+	  
+	  
+	  $.getJSON(urlss+'/tportalvp/aplicaciones/oa/WidgetsOA/data/carreras/'+carr_ccod+'.json', function(data) {
+	  $btncarreras = $("#btncarrera");
+	  var text = "";
+	  
+	  if (data['nombre'].length > 0) {
+		text +="<article>";
+		text +='<div class="datos-left">';
+		text +='<span class="tit-pro"><strong>T&iacute;tulo: </strong>'+data['titulo']+'</span>';	
+		text +='<span class="duracion"><strong>Duraci&oacute;n: </strong>'+data['duracion']+'</span>';	
+	    if(data['continuidad'].length > 0){
+			text +='<span class="continuidad"><strong>Continuidad de estudios: </strong>'+data['continuidad']+'</span>';		
+		}
+		text +='<span class="inst-tit"><strong>Instituci&oacute;n que otorga el t&iacute;tulo: </strong>'+data['institucion']+'</span>';	
+		if(data['grado'].length > 0){
+			text +='<span class="grado"><strong>Grado: </strong>'+data['grado']+'</span>';	
+		}
+		text +='</div></article>';
+	 
+		$btncarreras.append(text);
+	  }
+	});
+	
+}

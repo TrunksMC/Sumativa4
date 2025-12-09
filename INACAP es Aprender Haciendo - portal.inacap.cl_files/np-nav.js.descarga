@@ -1,0 +1,192 @@
+try {
+let sedesMenu = document.getElementById('sedes-menu'),    
+  sedesNorte = document.getElementById('sedes-norte'),
+  sedesMetropolitana = document.getElementById('sedes-metropolitana'),
+  sedesSur = document.getElementById('sedes-sur'),
+  sedesAustral = document.getElementById('sedes-austral'),	
+  financiamiento = document.getElementById('financiamiento'),
+  cft = document.getElementById('cft'),
+  ip = document.getElementById('ip'),
+  portalPago = document.getElementById('portal-pago'),
+  eduMedia = document.getElementById('edu-media'),
+  accesoIntranet = document.getElementById('acceso-intranet'),
+  noticias = document.getElementById('noticias'),
+  biblioteca = document.getElementById('nav-biblioteca'),
+
+  dropSede = document.getElementById('drop-sedes'),
+  dropFinanciamiento = document.getElementById('drop-financiamiento'),
+  dropCFT = document.getElementById('drop-cft'),
+  dropIP = document.getElementById('drop-ip'),
+  dropPagos = document.getElementById('drop-pagos'),
+  dropMedia = document.getElementById('drop-media'),
+  dropBibliotecas = document.getElementById('drop-bibliotecas'),
+  dropIntranet = document.getElementById('drop-intranet'),
+  dropNoticias = document.getElementById('drop-noticias'),
+
+  btnSedes = document.getElementById('btn-sedes'),
+  btnMenu = document.getElementById('btn-menu'),
+  btnFinanciamiento = document.getElementById('btn-financiamiento'),
+  btnZonaNorte = document.getElementById('btn-zona-norte'),
+  btnZonaMetropolitana = document.getElementById('btn-zona-metropolitana'),
+  btnZonaSur= document.getElementById('btn-zona-sur'),
+  btnZonaAustral= document.getElementById('btn-zona-austral'),	
+  btnCFT= document.getElementById('btn-cft'),
+  btnIP= document.getElementById('btn-ip'),
+  btnPagos = document.getElementById('btn-pagos'),
+  btnCedem = document.getElementById('btn-cedem'),
+  btnIntranet= document.getElementById('btn-intranet'),
+  btnNoticias= document.getElementById('btn-noticias'),
+  btnBiblotecas= document.getElementById('btn-nav-bibliotecas'),
+  btnClose = document.querySelectorAll('.close-menu'),
+  btnVolverSubmenu = document.querySelectorAll('.btn-volver-submenu');
+
+  const ini = (seccion, opa, visi, left) =>{
+    setTimeout(()=>{
+      seccion.style.cssText = `
+        opacity: ${opa};
+        visibility: ${visi};
+        transition: all .3s;
+        left:${left}`;
+    }, 50)
+  }
+  btnMenu.addEventListener('click', ()=>{
+    let icon = btnMenu.querySelector('i');
+    icon.innerText === 'menu' ? icon.innerText = 'close' : icon.innerText = 'menu';
+    let menu = document.querySelector('.menu-container');
+  })
+
+/* esconder Menu al hacer scroll */
+  let lastScrollTop = 0;
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    const menu = document.querySelector(".np-navbar.navbar");
+    if (currentScroll > lastScrollTop) {
+      menu.style.top = "-120px";
+      menu.style.transition = "all 0.3s";
+    } else {
+      menu.style.top = "-0px";
+      menu.style.transition = "all 0.3s";
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; 
+  });
+  const mediaQuery = window.matchMedia('(max-width: 1279px)');
+
+  
+  const botones = [btnBiblotecas, btnSedes, btnFinanciamiento, btnIP, btnCFT, btnCedem, btnNoticias, btnPagos, btnIntranet];
+  botones.forEach(btn => {
+    if (btn.hasAttribute('href')) {
+      btn.setAttribute('data-href', btn.getAttribute('href'));
+    }
+  });
+  const drops = [dropSede, dropFinanciamiento, dropCFT, dropIP, dropPagos, dropMedia, dropBibliotecas, dropIntranet, dropNoticias];
+      drops.forEach(drop => {
+        drop.addEventListener('click', (event)=>{
+          event.stopPropagation();
+        })
+      });
+  const actualizarBotonesPorPantalla = () =>{
+    if (window.innerWidth < 1280) {
+      console.log('soy menor a 1280')
+      const drops = [dropSede, dropFinanciamiento, dropCFT, dropIP, dropPagos, dropMedia, dropBibliotecas, dropIntranet, dropNoticias];
+      drops.forEach(drop => {
+        drop.addEventListener('click', (event)=>{
+          event.stopPropagation();
+        })
+      });
+      botones.forEach(btn => {
+        btn.removeAttribute('href');
+        btn.closest('li')?.classList.remove('dropdown');
+      });
+
+      btnZonaNorte.addEventListener('click',(e)=>{
+        sedesNorte.classList.remove('d-none');
+        ini(sedesNorte, 1, 'visible', '0%');
+        console.log('con');
+      })
+      btnZonaMetropolitana.addEventListener('click',(e)=>{
+        sedesMetropolitana.classList.remove('d-none');
+        ini(sedesMetropolitana, 1, 'visible', '0%');
+        console.log('con');
+      })
+      btnZonaSur.addEventListener('click',(e)=>{
+        sedesSur.classList.remove('d-none');
+        ini(sedesSur, 1, 'visible', '0%')
+      })
+      btnZonaAustral.addEventListener('click',(e)=>{
+        sedesAustral.classList.remove('d-none');
+        ini(sedesAustral, 1, 'visible', '0%')
+      })  
+      btnSedes.addEventListener('click',(e)=>{
+        sedesMenu.classList.remove('d-none');
+        ini(sedesMenu, 1, 'visible', '0%')
+      })
+      btnFinanciamiento.addEventListener('click',(e)=>{
+        financiamiento.classList.remove('d-none');
+        ini(financiamiento, 1, 'visible', '0%')
+      })
+      btnCFT.addEventListener('click',(e)=>{
+        cft.classList.remove('d-none');
+        ini(cft, 1, 'visible', '0%')
+      })
+      btnIP.addEventListener('click',(e)=>{
+        ip.classList.remove('d-none');
+        ini(ip, 1, 'visible', '0%')
+      })
+      btnPagos.addEventListener('click',(e)=>{
+        portalPago.classList.remove('d-none');
+        ini(portalPago, 1, 'visible', '0%')
+      })
+      btnCedem.addEventListener('click',(e)=>{
+        eduMedia.classList.remove('d-none');
+        ini(eduMedia, 1, 'visible', '0%')
+      })
+      btnIntranet.addEventListener('click',(e)=>{
+        accesoIntranet.classList.remove('d-none');
+        ini(accesoIntranet, 1, 'visible', '0%')
+      })
+      btnNoticias.addEventListener('click',(e)=>{
+        noticias.classList.remove('d-none');
+        ini(noticias, 1, 'visible', '0%');
+      })
+      btnBiblotecas.addEventListener('click',(e)=>{
+        biblioteca.classList.remove('d-none');
+        ini(biblioteca, 1, 'visible', '0%');
+      })
+      for(const btn of btnClose){
+        btn.addEventListener('click', (e)=>{
+          $(".navbar-toggler").click();
+        })
+      }
+      for(const btn of btnVolverSubmenu){
+        btn.addEventListener('click', (e)=>{
+  
+          let target = e.target;
+          let zona = target.closest('.sedes-submenu-mobile');
+  
+          ini(zona, 0, 'hidden', '100%')
+          setTimeout(()=>{
+            zona.classList.add('d-none')
+          },500)
+          
+  
+          $('.dropdown-menu.sedes').on('click', function (e) {
+            e.stopPropagation();
+          });
+        })
+      }
+    }else if (window.innerWidth > 1281) {
+      
+      console.log('lllaaa')
+      botones.forEach(btn => {
+        const hrefOriginal = btn.getAttribute('data-href');
+        if (hrefOriginal) {
+          btn.setAttribute('href', hrefOriginal);
+        }
+      });
+    }
+  }
+  
+
+  window.addEventListener('load', actualizarBotonesPorPantalla);
+  window.addEventListener('resize', actualizarBotonesPorPantalla);
+} catch{ }

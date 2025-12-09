@@ -1,0 +1,803 @@
+YUI.add("node-pluginhost",function(e,t){e.Node.plug=function(){var t=e.Array(arguments);return t.unshift(e.Node),e.Plugin.Host.plug.apply(e.Base,t),e.Node},e.Node.unplug=function(){var t=e.Array(arguments);return t.unshift(e.Node),e.Plugin.Host.unplug.apply(e.Base,t),e.Node},e.mix(e.Node,e.Plugin.Host,!1,null,1),e.Object.each(e.Node._instances,function(t){e.Plugin.Host.apply(t)}),e.NodeList.prototype.plug=function(){var t=arguments;return e.NodeList.each(this,function(n){e.Node.prototype.plug.apply(e.one(n),t)}),this},e.NodeList.prototype.unplug=function(){var t=arguments;return e.NodeList.each(this,function(n){e.Node.prototype.unplug.apply(e.one(n),t)}),this}},"patched-v3.20.6",{requires:["node-base","pluginhost"]});
+
+YUI.add("dom-screen",function(e,t){(function(e){var t="documentElement",n="compatMode",r="position",i="fixed",s="relative",o="left",u="top",a="BackCompat",f="medium",l="borderLeftWidth",c="borderTopWidth",h="getBoundingClientRect",p="getComputedStyle",d=e.DOM,v=/^t(?:able|d|h)$/i,m;e.UA.ie&&(e.config.doc[n]!=="BackCompat"?m=t:m="body"),e.mix(d,{winHeight:function(e){var t=d._getWinSize(e).height;return t},winWidth:function(e){var t=d._getWinSize(e).width;return t},docHeight:function(e){var t=d._getDocSize(e).height;return Math.max(t,d._getWinSize(e).height)},docWidth:function(e){var t=d._getDocSize(e).width;return Math.max(t,d._getWinSize(e).width)},docScrollX:function(n,r){r=r||n?d._getDoc(n):e.config.doc;var i=r.defaultView,s=i?i.pageXOffset:0;return Math.max(r[t].scrollLeft,r.body.scrollLeft,s)},docScrollY:function(n,r){r=r||n?d._getDoc(n):e.config.doc;var i=r.defaultView,s=i?i.pageYOffset:0;return Math.max(r[t].scrollTop,r.body.scrollTop,s)},getXY:function(){return e.config.doc[t][h]?function(r){var i=null,s,o,u,f,l,c,p,v,g,y;if(r&&r.tagName){p=r.ownerDocument,u=p[n],u!==a?y=p[t]:y=p.body,y.contains?g=y.contains(r):g=e.DOM.contains(y,r);if(g){v=p.defaultView,v&&"pageXOffset"in v?(s=v.pageXOffset,o=v.pageYOffset):(s=m?p[m].scrollLeft:d.docScrollX(r,p),o=m?p[m].scrollTop:d.docScrollY(r,p)),e.UA.ie&&(!p.documentMode||p.documentMode<8||u===a)&&(l=y.clientLeft,c=y.clientTop),f=r[h](),i=[f.left,f.top];if(l||c)i[0]-=l,i[1]-=c;if(o||s)if(!e.UA.ios||e.UA.ios>=4.2)i[0]+=s,i[1]+=o}else i=d._getOffset(r)}return i}:function(t){var n=null,s,o,u,a,f;if(t)if(d.inDoc(t)){n=[t.offsetLeft,t.offsetTop],s=t.ownerDocument,o=t,u=e.UA.gecko||e.UA.webkit>519?!0:!1;while(o=o.offsetParent)n[0]+=o.offsetLeft,n[1]+=o.offsetTop,u&&(n=d._calcBorders(o,n));if(d.getStyle(t,r)!=i){o=t;while(o=o.parentNode){a=o.scrollTop,f=o.scrollLeft,e.UA.gecko&&d.getStyle(o,"overflow")!=="visible"&&(n=d._calcBorders(o,n));if(a||f)n[0]-=f,n[1]-=a}n[0]+=d.docScrollX(t,s),n[1]+=d.docScrollY(t,s)}else n[0]+=d.docScrollX(t,s),n[1]+=d.docScrollY(t,s)}else n=d._getOffset(t);return n}}(),getScrollbarWidth:e.cached(function(){var t=e.config.doc,n=t.createElement("div"),r=t.getElementsByTagName("body")[0],i=.1;return r&&(n.style.cssText="position:absolute;visibility:hidden;overflow:scroll;width:20px;",n.appendChild(t.createElement("p")).style.height="1px",r.insertBefore(n,r.firstChild),i=n.offsetWidth-n.clientWidth,r.removeChild(n)),i},null,.1),getX:function(e){return d.getXY(e)[0]},getY:function(e){return d.getXY(e)[1]},setXY:function(e,t,n){var i=d.setStyle,a,f,l,c,h,p,v;e&&t&&(a=d.getStyle(e,r),h=d.OFFSET_XY,h||(p=d.getComputedStyle(e,"direction"),h=p==="rtl"?"right":o),f=d._getOffset(e,h),a=="static"&&(a=s,i(e,r,a)),c=d._getDirXY(e,h),v=t[0],h==="right"&&(v=d.winWidth()-(t[0]+parseInt(d.getComputedStyle(e,"width"),10)),!f[0]&&!n&&(n=!1)),v!==null&&i(e,h,v-c[0]+f[0]+"px"),t[1]!==null&&i(e,u,t[1]-c[1]+f[1]+"px"),n||(l=d.getXY(e),(l[0]!==t[0]||l[1]!==t[1])&&d.setXY(e,t,!0)))},setX:function(e,t){return d.setXY(e,[t,null])},setY:function(e,t){return d.setXY(e,[null,t])},swapXY:function(e,t){var n=d.getXY(e);d.setXY(e,d.getXY(t)),d.setXY(t,n)},_calcBorders:function(t,n){var r=parseInt(d[p](t,c),10)||0,i=parseInt(d[p](t,l),10)||0;return e.UA.gecko&&v.test(t.tagName)&&(r=0,i=0),n[0]+=i,n[1]+=r,n},_getWinSize:function(r,i){i=i||r?d._getDoc(r):e.config.doc;var s=i.defaultView||i.parentWindow,o=i[n],u=s.innerHeight,a=s.innerWidth,f=i[t];return o&&!e.UA.opera&&(o!="CSS1Compat"&&(f=i.body),u=f.clientHeight,a=f.clientWidth),{height:u,width:a}},_getDocSize:function(r){var i=r?d._getDoc(r):e.config.doc,s=i[t];return i[n]!="CSS1Compat"&&(s=i.body),{height:s.scrollHeight,width:s.scrollWidth}},_getDirXY:function(e,t){var n=d.getXY(e);return t==="right"&&(n[0]=d.winWidth()-(n[0]+parseInt(d.getComputedStyle(e,"width"),10))),n}})})(e),function(e){var t="top",n="right",r="bottom",i="left",s=function(e,s){var o=Math.max(e[t],s[t]),u=Math.min(e[n],s[n]),a=Math.min(e[r],s[r]),f=Math.max(e[i],s[i]),l={};return l[t]=o,l[n]=u,l[r]=a,l[i]=f,l},o=e.DOM;e.mix(o,{region:function(e){var t=o.getXY(e),n=!1;return e&&t&&(n=o._getRegion(t[1],t[0]+e.offsetWidth,t[1]+e.offsetHeight,t[0])),n},intersect:function(u,a,f){var l=f||o.region(u),c={},h=a,p;if(h.tagName)c=o.region(h);else{if(!e.Lang.isObject(a))return!1;c=a}return p=s(c,l),{top:p[t],right:p[n],bottom:p[r],left:p[i],area:(p[r]-p[t])*(p[n]-p[i]),yoff:p[r]-p[t],xoff:p[n]-p[i],inRegion:o.inRegion(u,a,!1,f)}},inRegion:function(u,a,f,l){var c={},h=l||o.region(u),p=a,d;if(p.tagName)c=o.region(p);else{if(!e.Lang.isObject(a))return!1;c=a}return f?h[i]>=c[i]&&h[n]<=c[n]&&h[t]>=c[t]&&h[r]<=c[r]:(d=s(c,h),d[r]>=d[t]&&d[n]>=d[i]?!0:!1)},inViewportRegion:function(e,t,n){return o.inRegion(e,o.viewportRegion(e),t,n)},_getRegion:function(e,s,o,u){var a={};return a[t]=a[1]=e,a[i]=a[0]=u,a[r]=o,a[n]=s,a.width=a[n]-a[i],a.height=a[r]-a[t],a},viewportRegion:function(t){t=t||e.config.doc.documentElement;var n=!1,r,i;return t&&(r=o.docScrollX(t),i=o.docScrollY(t),n=o._getRegion(i,o.winWidth(t)+r,i+o.winHeight(t),r)),n}})}(e)},"patched-v3.20.6",{requires:["dom-base","dom-style"]});
+
+YUI.add("node-screen",function(e,t){e.each(["winWidth","winHeight","docWidth","docHeight","docScrollX","docScrollY"],function(t){e.Node.ATTRS[t]={getter:function(){var n=Array.prototype.slice.call(arguments);return n.unshift(e.Node.getDOMNode(this)),e.DOM[t].apply(this,n)}}}),e.Node.ATTRS.scrollLeft={getter:function(){var t=e.Node.getDOMNode(this);return"scrollLeft"in t?t.scrollLeft:e.DOM.docScrollX(t)},setter:function(t){var n=e.Node.getDOMNode(this);n&&("scrollLeft"in n?n.scrollLeft=t:(n.document||n.nodeType===9)&&e.DOM._getWin(n).scrollTo(t,e.DOM.docScrollY(n)))}},e.Node.ATTRS.scrollTop={getter:function(){var t=e.Node.getDOMNode(this);return"scrollTop"in t?t.scrollTop:e.DOM.docScrollY(t)},setter:function(t){var n=e.Node.getDOMNode(this);n&&("scrollTop"in n?n.scrollTop=t:(n.document||n.nodeType===9)&&e.DOM._getWin(n).scrollTo(e.DOM.docScrollX(n),t))}},e.Node.importMethod(e.DOM,["getXY","setXY","getX","setX","getY","setY","swapXY"]),e.Node.ATTRS.region={getter:function(){var t=this.getDOMNode(),n;return t&&!t.tagName&&t.nodeType===9&&(t=t.documentElement),e.DOM.isWindow(t)?n=e.DOM.viewportRegion(t):n=e.DOM.region(t),n}},e.Node.ATTRS.viewportRegion={getter:function(){return e.DOM.viewportRegion(e.Node.getDOMNode(this))}},e.Node.importMethod(e.DOM,"inViewportRegion"),e.Node.prototype.intersect=function(t,n){var r=e.Node.getDOMNode(this);return e.instanceOf(t,e.Node)&&(t=e.Node.getDOMNode(t)),e.DOM.intersect(r,t,n)},e.Node.prototype.inRegion=function(t,n,r){var i=e.Node.getDOMNode(this);return e.instanceOf(t,e.Node)&&(t=e.Node.getDOMNode(t)),e.DOM.inRegion(i,t,n,r)}},"patched-v3.20.6",{requires:["dom-screen","node-base"]});
+
+YUI.add("node-style",function(e,t){(function(e){e.mix(e.Node.prototype,{setStyle:function(t,n){return e.DOM.setStyle(this._node,t,n),this},setStyles:function(t){return e.DOM.setStyles(this._node,t),this},getStyle:function(t){return e.DOM.getStyle(this._node,t)},getComputedStyle:function(t){return e.DOM.getComputedStyle(this._node,t)}}),e.NodeList.importMethod(e.Node.prototype,["getStyle","getComputedStyle","setStyle","setStyles"])})(e);var n=e.Node;e.mix(n.prototype,{show:function(e){return e=arguments[arguments.length-1],this.toggleView(!0,e),this},_show:function(){this.removeAttribute("hidden"),this.setStyle("display","")},_isHidden:function(){return this.hasAttribute("hidden")||e.DOM.getComputedStyle(this._node,"display")==="none"},toggleView:function(e,t){return this._toggleView.apply(this,arguments),this},_toggleView:function(e,t){return t=arguments[arguments.length-1],typeof e!="boolean"&&(e=this._isHidden()?1:0),e?this._show():this._hide(),typeof t=="function"&&t.call(this),this},hide:function(e){return e=arguments[arguments.length-1],this.toggleView(!1,e),this},_hide:function(){this.setAttribute("hidden","hidden"),this.setStyle("display","none")}}),e.NodeList.importMethod(e.Node.prototype,["show","hide","toggleView"])},"patched-v3.20.6",{requires:["dom-style","node-base"]});
+
+YUI.add("aui-node-base",function(e,t){var n=e.Lang,r=n.isArray,i=n.isFunction,s=n.isObject,o=n.isString,u=n.isUndefined,a=n.isValue,f=e.Array,l=e.Node,c=e.NodeList,h=e.getClassName,p=e.DOM._getRegExp,d=e.config,v=d.doc,m=d.win,g=l.prototype,y=g._hide,b=g._show,w=c.prototype,E=["",""],S=h("hide"),x="none",T="text",N=!1,C={b:"borderBottomWidth",l:"borderLeftWidth",r:"borderRightWidth",t:"borderTopWidth"},k={b:"marginBottom",l:"marginLeft",r:"marginRight",t:"marginTop"},L={b:"paddingBottom",l:"paddingLeft",r:"paddingRight",t:"paddingTop"},A=v.createElement("div");A.style.display="none",A.innerHTML="   <table></table>&nbsp;",A.attachEvent&&A.fireEvent&&(A.attachEvent("onclick",function H(){N=!0,A.detachEvent("onclick",H)}),A.cloneNode(!0).fireEvent("onclick"));var O=!A.getElementsByTagName("tbody").length,M=/^\s+/,_=/\=([^=\x27\x22>\s]+\/)>/g,D=/<([\w:]+)/;A=null;var P=function(e,t,n){var r,i=t?"on":"",s,o;e.setAttribute("unselectable",i);if(!n){r=e.getElementsByTagName("*");for(s=0;o=r[s];s++)o.setAttribute("unselectable",i)}};e.mix(g,{ancestorsByClassName:function(t,n){var r=this,i=[],s=new RegExp("\\b"+t+"\\b"),o=r.getDOM();n||(o=o.parentNode);while(o&&o.nodeType!==9)o.nodeType===1&&s.test(o.className)&&i.push(o),o=o.parentNode;return e.all(i)},attr:function(e,t){var r=this,i;if(!u(t)){var o=r.getDOM();return e in o?r.set(e,t):r.setAttribute(e,t),r}if(s(e)){for(i in e)e.hasOwnProperty(i)&&r.attr(i,e[i]);return r}var a=r.get(e);return n.isValue(a)||(a=r.getAttribute(e)),a},clone:function(){var t;return N?t=function(){var t=this.getDOM(),n;if(t.nodeType!==3){var r=this.outerHTML();r=r.replace(_,'="$1">').replace(M,""),n=l.create(r)}else n=e.one(t.cloneNode());return n}:t=function(){return this.cloneNode(!0)},t}(),center:function(t){var n=this,i=n.get("region"),o,u;if(r(t))o=t[0],u=t[1];else{var a;s(t)&&!e.instanceOf(t,l)?a=t:a=(e.one(t)||e.getBody()).get("region"),o=a.left+a.width/2,u=a.top+a.height/2}n.setXY([o-i.width/2,u-i.height/2])},empty:function(){var e=this;e.all(">*").remove().purge();var t=l.getDOMNode(e);while(t.firstChild)t.removeChild(t.firstChild);return e},getDOM:function(){var e=this;return l.getDOMNode(e)},getBorderWidth:function(e){var t=this;return t._getBoxStyleAsNumber(e,C)},getCenterXY:function(){var e=this,t=e.get("region");return[t.left+t.width/2,t.top+t.height/2]},getMargin:function(e){var t=this;return t._getBoxStyleAsNumber(e,k)},getPadding:function(e){var t=this;return t._getBoxStyleAsNumber(e,L)},guid:function(){var t=this,n=t.get("id");return n||(n=e.stamp(t),t.set("id",n)),n},hover:function(t,n){var r=this,i,o=r._defaultHoverOptions;return s(t,!0)?(i=t,i=e.mix(i,o),t=i.over,n=i.out):i=e.mix({over:t,out:n},o),r._hoverOptions=i,i.overTask=e.debounce(r._hoverOverTaskFn,null,r),i.outTask=e.debounce(r._hoverOutTaskFn,null,r),new e.EventHandle([r.on(i.overEventType,r._hoverOverHandler,r),r.on(i.outEventType,r._hoverOutHandler,r)])},html:function(){var e=arguments,t=e.length;return t?(this.set("innerHTML",e[0]),this):this.get("innerHTML")},outerHTML:function(){var e=this,t=e.getDOM();if("outerHTML"in t)return t.outerHTML;var n=l.create("<div></div>").append(this.clone());try{return n.html()}catch(r){}finally{n=null}},placeAfter:function(e){var t=this;return t._place(e,t.get("nextSibling"))},placeBefore:function(e){var t=this;return t._place(e,t)},prependTo:function(t){var n=this;return e.one(t).prepend(n),n},radioClass:function(e){var t=this,n=t.siblings();if(o(e))n.removeClass(e),t.addClass(e);else if(r(e)){var i=n.getDOM(),s=p("(?:^|\\s+)(?:"+e.join("|")+")(?=\\s+|$)","g"),u,a;for(a=i.length-1;a>=0;a--)u=i[a],u.className=u.className.replace(s,"");t.addClass(e.join(" "))}return t},resetId:function(t){var n=this;return n.attr("id",e.guid(t)),n},selectText:function(e,t){var n=this,r=n.getDOM(),i=n.val().length;t=a(t)?t:i,e=a(e)?e:0;try{if(r.setSelectionRange)r.setSelectionRange(e,t);else if(r.createTextRange){var s=r.createTextRange();s.moveStart("character",e),s.moveEnd("character",t-i),s.select()}else r.select();r!==v.activeElement&&r.focus()}catch(o){}return n},selectable:function(t){var n=this;return n.setStyles({"-webkit-user-select":T,"-khtml-user-select":T,"-moz-user-select":T,"-ms-user-select":T,"-o-user-select":T,"user-select":T}),(e.UA.ie||e.UA.opera)&&P(n._node,!1,t),n},swallowEvent:function(e,t){var n=this,i=function(e){return e.stopPropagation(),t&&(e.preventDefault(),e.halt()),!1};return r(e)?(f.each(e,function(e){n.on(e,i)}),this):(n.on(e,i),n)},text:function(t){var n=this,r=n.getDOM();return u(t)?n._getText(r.childNodes):(t=e.DOM._getDoc(r).createTextNode(t),n.empty().append(t))},toggle:function(){var e=this;return e._toggleView.apply(e,arguments),e},unselectable:function(t){var n=this;return n.setStyles({"-webkit-user-select":x,"-khtml-user-select":x,"-moz-user-select":x,"-ms-user-select":x,"-o-user-select":x,"user-select":x}),(e.UA.ie||e.UA.opera)&&P(n._node,!0,t),n},val:function(e){var t=this;return u(e)?t.get("value"):t.set("value",e)},_getBoxStyleAsNumber:function(e,t){var n=this,r=e.match(/\w/g),i=0,s,o,u;for(u=r.length-1;u>=0;u--)o=r[u],s=0,o&&(s=parseFloat(n.getComputedStyle(t[o])),s=Math.abs(s),i+=s||0);return i},_getText:function(e){var t=this,n=e.length,r,i=[],s;for(s=0;s<n;s++)r=e[s],r&&r.nodeType!==8&&(r.nodeType!==1&&i.push(r.nodeValue),r.childNodes&&i.push(t._getText(r.childNodes)));return i.join("")},_hide:function(){var e=this;return e.addClass(S),y.apply(e,arguments)},_hoverOutHandler:function(e){var t=this,n=t._hoverOptions;n.outTask.delay(n.outDelay,e)},_hoverOverHandler:function(e){var t=this,n=t._hoverOptions;n.overTask.delay(n.overDelay,e)},_hoverOutTaskFn:function(e){var t=this,n=t._hoverOptions;n.overTask.cancel(),n.out.apply(n.context||e.currentTarget,arguments)},_hoverOverTaskFn:function(e){var t=this,n=t._hoverOptions;n.outTask.cancel(),n.over.apply(n.context||e.currentTarget,arguments)},_place:function(e,t){var n=this,r=n.get("parentNode");return r&&(o(e)&&(e=l.create(e)),r.insertBefore(e,t)),n},_show:function(){var e=this;return e
+.removeClass(S),b.apply(e,arguments)},_defaultHoverOptions:{overEventType:"mouseenter",outEventType:"mouseleave",overDelay:0,outDelay:0,over:n.emptyFn,out:n.emptyFn}},!0),g.__isHidden=g._isHidden,g._isHidden=function(){var e=this;return g.__isHidden.call(e)||e.hasClass(e._hideClass||S)},e.each(["Height","Width"],function(e,t){var n=t?"lr":"tb",r=e.toLowerCase();g[r]=function(t){var i=this,s=i;if(u(t)){var o=i._node,a;if(o)if(!o.tagName&&o.nodeType===9||o.alert)a=i.get("region")[r];else{a=i.get("offset"+e);if(!a){var f=i.getStyle("display"),l=i.getStyle("position"),c=i.getStyle("visibility");i.setStyles({display:"block !important",position:"absolute !important",visibility:"hidden !important"}),a=i.get("offset"+e),i.setStyles({display:f,position:l,visibility:c})}a&&(a-=i.getPadding(n)+i.getBorderWidth(n))}s=a}else i.setStyle(r,t);return s},g["inner"+e]=function(){var e=this;return e[r]()+e.getPadding(n)},g["outer"+e]=function(t){var r=this,i=r["inner"+e](),s=r.getBorderWidth(n),o=i+s;return t&&(o+=r.getMargin(n)),o}}),O||(e.DOM._ADD_HTML=e.DOM.addHTML,e.DOM.addHTML=function(t,n,r){var i=t.nodeName&&t.nodeName.toLowerCase()||"",s="";u(n)||(o(n)?s=(D.exec(n)||E)[1]:n.nodeType&&n.nodeType===11&&n.childNodes.length?s=n.childNodes[0].nodeName:n.nodeName&&(s=n.nodeName),s=s&&s.toLowerCase());if(i==="table"&&s==="tr"){t=t.getElementsByTagName("tbody")[0]||t.appendChild(t.ownerDocument.createElement("tbody"));var a=(r&&r.nodeName||"").toLowerCase();a==="tbody"&&r.childNodes.length>0&&(r=r.firstChild)}return e.DOM._ADD_HTML(t,n,r)}),c.importMethod(g,["after","appendTo","attr","before","empty","getX","getXY","getY","hover","html","innerHeight","innerWidth","outerHeight","outerHTML","outerWidth","prepend","prependTo","purge","selectText","selectable","setX","setXY","setY","text","toggle","unselectable","val"]),e.mix(w,{all:function(t){var n=this,r=[],i=n._nodes,s=i.length,o,u;for(u=0;u<s;u++)o=e.Selector.query(t,i[u]),o&&o.length&&r.push.apply(r,o);return r=f.unique(r),e.all(r)},first:function(){var e=this;return e.item(0)},getDOM:function(){return c.getDOMNodes(this)},last:function(){var e=this;return e.item(e._nodes.length-1)},one:function(t){var n=this,r=null,i=n._nodes,s=i.length,o;for(o=0;o<s;o++){r=e.Selector.query(t,i[o],!0);if(r){r=e.one(r);break}}return r}}),w.__filter=w.filter,w.filter=function(t,n){var r=this,s;if(i(t)){var o=[];r.each(function(e,r,i){t.call(n||e,e,r,i)&&o.push(e._node)}),s=e.all(o)}else s=w.__filter.call(r,t);return s},e.mix(c,{create:function(t){var n=e.getDoc().invoke("createDocumentFragment");return n.append(t).get("childNodes")}}),e.mix(e,{getBody:function(){var t=this;return t._bodyNode||(t._bodyNode=e.one(v.body)),t._bodyNode},getDoc:function(){var t=this;return t._documentNode||(t._documentNode=e.one(v)),t._documentNode},getWin:function(){var t=this;return t._windowNode||(t._windowNode=e.one(m)),t._windowNode}})},"3.1.0-deprecated.126",{requires:["array-extras","aui-base-lang","aui-classnamemanager","aui-debounce","node"]});
+
+/**
+ * SPDX-FileCopyrightText: (c) 2000 Liferay, Inc. https://liferay.com
+ * SPDX-License-Identifier: LGPL-2.1-or-later OR LicenseRef-Liferay-DXP-EULA-2.0.0-2023-06
+ */
+
+AUI.add(
+	'liferay-menu',
+	(A) => {
+		const Util = Liferay.Util;
+
+		const ARIA_ATTR_ROLE = 'role';
+
+		const ATTR_CLASS_NAME = 'className';
+
+		const AUTO = 'auto';
+
+		const CSS_BTN_PRIMARY = 'btn-primary';
+
+		const CSS_EXTENDED = 'lfr-extended';
+
+		const CSS_OPEN = 'open';
+
+		const CSS_PORTLET = '.portlet';
+
+		const DEFAULT_ALIGN_POINTS = ['tl', 'bl'];
+
+		const EVENT_CLICK = 'click';
+
+		const EVENT_KEYDOWN = 'keydown';
+
+		const PARENT_NODE = 'parentNode';
+
+		const STR_BOTTOM = 'b';
+
+		const STR_LEFT = 'l';
+
+		const STR_LTR = 'ltr';
+
+		const STR_RIGHT = 'r';
+
+		const STR_RTL = 'rtl';
+
+		const STR_TOP = 't';
+
+		const MAP_ALIGN_DOWN = {
+			downleft: ['tr', 'br'],
+			downright: DEFAULT_ALIGN_POINTS,
+		};
+
+		const MAP_ALIGN_HORIZONTAL_OVERLAY = {
+			left: STR_RIGHT,
+			right: STR_LEFT,
+		};
+
+		const MAP_ALIGN_HORIZONTAL_OVERLAY_RTL = {
+			left: STR_LEFT,
+			right: STR_RIGHT,
+		};
+
+		const MAP_ALIGN_HORIZONTAL_TRIGGER = {
+			left: STR_LEFT,
+			right: STR_RIGHT,
+		};
+
+		const MAP_ALIGN_HORIZONTAL_TRIGGER_RTL = {
+			left: STR_RIGHT,
+			right: STR_LEFT,
+		};
+
+		const MAP_ALIGN_VERTICAL_OVERLAY = {
+			down: STR_TOP,
+			up: STR_BOTTOM,
+		};
+
+		const MAP_ALIGN_VERTICAL_TRIGGER = {
+			down: STR_BOTTOM,
+			up: STR_TOP,
+		};
+
+		const MAP_LIVE_SEARCH = {};
+
+		const REGEX_DIRECTION =
+			/\bdirection-(downleft|downright|down|left|right|up)\b/;
+
+		const REGEX_MAX_DISPLAY_ITEMS = /max-display-items-(\d+)/;
+
+		const SELECTOR_ANCHOR = 'a';
+
+		const SELECTOR_LIST_ITEM = 'li';
+
+		const SELECTOR_SEARCH_CONTAINER = '.lfr-menu-list-search-container';
+
+		const TPL_MENU = '<div class="open" />';
+
+		const Menu = function () {
+			const instance = this;
+
+			instance._handles = [];
+
+			if (!Menu._INSTANCE) {
+				Menu._INSTANCE = instance;
+			}
+		};
+
+		Menu.prototype = {
+			_closeActiveMenu() {
+				const instance = this;
+
+				const menu = instance._activeMenu;
+
+				if (menu) {
+					const handles = instance._handles;
+
+					A.Array.invoke(handles, 'detach');
+
+					handles.length = 0;
+
+					const trigger = instance._activeTrigger;
+
+					const overlay = instance._overlayMap.get(
+						trigger.generateID()
+					);
+
+					if (overlay) {
+						overlay.hide();
+					}
+
+					instance._activeMenu = null;
+					instance._activeTrigger = null;
+
+					trigger.attr({
+						'aria-expanded': false,
+					});
+
+					if (trigger.hasClass(CSS_EXTENDED)) {
+						trigger.removeClass(CSS_BTN_PRIMARY);
+					}
+					else {
+						trigger.get(PARENT_NODE).removeClass(CSS_OPEN);
+
+						const portlet = trigger.ancestor(CSS_PORTLET);
+
+						if (portlet) {
+							portlet.removeClass(CSS_OPEN);
+						}
+					}
+				}
+			},
+
+			_getAlignPoints: A.cached((cssClass) => {
+				let alignPoints = DEFAULT_ALIGN_POINTS;
+
+				let defaultOverlayHorizontalAlign = STR_RIGHT;
+
+				let defaultTriggerHorizontalAlign = STR_LEFT;
+
+				let mapAlignHorizontalOverlay = MAP_ALIGN_HORIZONTAL_OVERLAY;
+
+				let mapAlignHorizontalTrigger = MAP_ALIGN_HORIZONTAL_TRIGGER;
+
+				const langDir =
+					Liferay.Language.direction[themeDisplay.getLanguageId()] ||
+					STR_LTR;
+
+				if (langDir === STR_RTL) {
+					defaultOverlayHorizontalAlign = STR_LEFT;
+					defaultTriggerHorizontalAlign = STR_RIGHT;
+
+					mapAlignHorizontalOverlay =
+						MAP_ALIGN_HORIZONTAL_OVERLAY_RTL;
+					mapAlignHorizontalTrigger =
+						MAP_ALIGN_HORIZONTAL_TRIGGER_RTL;
+				}
+
+				if (cssClass.indexOf(AUTO) === -1) {
+					const directionMatch = cssClass.match(REGEX_DIRECTION);
+
+					const direction =
+						(directionMatch && directionMatch[1]) || AUTO;
+
+					if (direction.startsWith('down')) {
+						alignPoints =
+							MAP_ALIGN_DOWN[direction] ||
+							MAP_ALIGN_DOWN.downright;
+					}
+					else {
+						const overlayHorizontal =
+							mapAlignHorizontalOverlay[direction] ||
+							defaultOverlayHorizontalAlign;
+						const overlayVertical =
+							MAP_ALIGN_VERTICAL_OVERLAY[direction] || STR_TOP;
+
+						const triggerHorizontal =
+							mapAlignHorizontalTrigger[direction] ||
+							defaultTriggerHorizontalAlign;
+						const triggerVertical =
+							MAP_ALIGN_VERTICAL_TRIGGER[direction] || STR_TOP;
+
+						alignPoints = [
+							overlayVertical + overlayHorizontal,
+							triggerVertical + triggerHorizontal,
+						];
+					}
+				}
+
+				return alignPoints;
+			}),
+
+			_getMenu(trigger) {
+				const instance = this;
+
+				if (!instance._overlayMap) {
+					instance._overlayMap = new Map();
+				}
+
+				instance._trigger = trigger;
+
+				let overlay = instance._overlayMap.get(trigger.generateID());
+
+				if (!overlay) {
+					const MenuOverlay = A.Component.create({
+						AUGMENTS: [
+							A.WidgetCssClass,
+							A.WidgetPosition,
+							A.WidgetStdMod,
+							A.WidgetModality,
+							A.WidgetPositionAlign,
+							A.WidgetPositionConstrain,
+							A.WidgetStack,
+						],
+
+						CSS_PREFIX: 'overlay',
+
+						EXTENDS: A.Widget,
+
+						NAME: 'overlay',
+					});
+
+					overlay = new MenuOverlay({
+						align: {
+							node: trigger,
+							points: DEFAULT_ALIGN_POINTS,
+						},
+						constrain: true,
+						hideClass: false,
+						modal: Util.isPhone() || Util.isTablet(),
+						preventOverlap: true,
+						zIndex: Liferay.zIndex.MENU,
+					}).render();
+
+					Liferay.once('beforeScreenFlip', () => {
+						overlay.destroy();
+
+						instance._overlayMap.clear();
+					});
+
+					instance._overlayMap.set(trigger.generateID(), overlay);
+				}
+				else {
+					overlay.set('align.node', trigger);
+				}
+
+				let listContainer = trigger.getData('menuListContainer');
+				let menu = trigger.getData('menu');
+				let menuHeight = trigger.getData('menuHeight');
+
+				const liveSearch = menu && MAP_LIVE_SEARCH[menu.guid()];
+
+				if (liveSearch) {
+					liveSearch.reset();
+				}
+
+				let listItems;
+
+				if (!menu || !listContainer) {
+					listContainer = trigger.next('ul');
+
+					listItems = listContainer.all(SELECTOR_LIST_ITEM);
+
+					menu = A.Node.create(TPL_MENU);
+
+					listContainer.placeBefore(menu);
+
+					listItems.last().addClass('last');
+
+					menu.append(listContainer);
+
+					trigger.setData('menuListContainer', listContainer);
+					trigger.setData('menu', menu);
+
+					instance._setARIARoles(trigger, menu, listContainer);
+
+					if (trigger.hasClass('select')) {
+						listContainer.delegate(
+							'click',
+							(event) => {
+								const selectedListItem = event.currentTarget;
+
+								const selectedListItemIcon =
+									selectedListItem.one('i');
+
+								const triggerIcon = trigger.one('i');
+
+								if (selectedListItemIcon && triggerIcon) {
+									const selectedListItemIconClass =
+										selectedListItemIcon.attr('class');
+
+									triggerIcon.attr(
+										'class',
+										selectedListItemIconClass
+									);
+								}
+
+								const selectedListItemMessage =
+									selectedListItem.one('.lfr-icon-menu-text');
+
+								const triggerMessage = trigger.one(
+									'.lfr-icon-menu-text'
+								);
+
+								if (selectedListItemMessage && triggerMessage) {
+									triggerMessage.setContent(
+										selectedListItemMessage.text()
+									);
+								}
+							},
+							SELECTOR_LIST_ITEM
+						);
+					}
+				}
+
+				overlay.setStdModContent(A.WidgetStdMod.BODY, menu);
+
+				if (!menuHeight) {
+					menuHeight = instance._getMenuHeight(
+						trigger,
+						menu,
+						listItems || listContainer.all(SELECTOR_LIST_ITEM)
+					);
+
+					trigger.setData('menuHeight', menuHeight);
+
+					if (menuHeight !== AUTO) {
+						listContainer.setStyle('maxHeight', menuHeight);
+					}
+				}
+
+				instance._getFocusManager();
+
+				return menu;
+			},
+
+			_getMenuHeight(trigger, menu, listItems) {
+				const instance = this;
+
+				const cssClass = trigger.attr(ATTR_CLASS_NAME);
+
+				let height = AUTO;
+
+				if (cssClass.indexOf('lfr-menu-expanded') === -1) {
+					const params = REGEX_MAX_DISPLAY_ITEMS.exec(cssClass);
+
+					const maxDisplayItems = params && parseInt(params[1], 10);
+
+					if (maxDisplayItems && listItems.size() > maxDisplayItems) {
+						instance._getLiveSearch(
+							trigger,
+							trigger.getData('menu')
+						);
+
+						height = 0;
+
+						const heights = listItems
+							.slice(0, maxDisplayItems)
+							.get('offsetHeight');
+
+						for (let i = heights.length - 1; i >= 0; i--) {
+							height += heights[i];
+						}
+					}
+				}
+
+				return height;
+			},
+
+			_positionActiveMenu() {
+				const instance = this;
+
+				const menu = instance._activeMenu;
+				const trigger = instance._activeTrigger;
+
+				if (menu) {
+					const cssClass = trigger.attr(ATTR_CLASS_NAME);
+
+					const overlay = instance._overlayMap.get(
+						trigger.generateID()
+					);
+
+					const align = overlay.get('align');
+
+					const listNode = menu.one('ul');
+
+					overlay.show();
+
+					const listNodeHeight = listNode.get('offsetHeight');
+					const listNodeWidth = listNode.get('offsetWidth');
+
+					align.points = instance._getAlignPoints(cssClass);
+
+					menu.addClass('lfr-icon-menu-open');
+
+					overlay.setAttrs({
+						align,
+						centered: false,
+						height: listNodeHeight,
+						modal: Util.isPhone() || Util.isTablet(),
+						width: listNodeWidth,
+					});
+
+					if (!Util.isPhone() && !Util.isTablet()) {
+						const focusManager = overlay.bodyNode.focusManager;
+
+						if (focusManager) {
+							focusManager.focus(0);
+						}
+					}
+
+					if (cssClass.indexOf(CSS_EXTENDED) > -1) {
+						trigger.addClass(CSS_BTN_PRIMARY);
+					}
+					else {
+						trigger.get(PARENT_NODE).addClass(CSS_OPEN);
+
+						const portlet = trigger.ancestor(CSS_PORTLET);
+
+						if (portlet) {
+							portlet.addClass(CSS_OPEN);
+						}
+					}
+				}
+			},
+
+			_setARIARoles(trigger, menu) {
+				const links = menu
+					.all(SELECTOR_ANCHOR)
+					.filter(':not([aria-haspopup="dialog"]');
+
+				const searchContainer = menu.one(SELECTOR_SEARCH_CONTAINER);
+
+				const listNode = menu.one('ul');
+
+				let ariaLinksAttr = 'menuitem';
+				let ariaListNodeAttr = 'menu';
+
+				if (searchContainer) {
+					ariaLinksAttr = 'option';
+					ariaListNodeAttr = 'listbox';
+				}
+
+				if (links.size() > 0) {
+					listNode.setAttribute(ARIA_ATTR_ROLE, ariaListNodeAttr);
+					links.set(ARIA_ATTR_ROLE, ariaLinksAttr);
+				}
+
+				trigger.attr({
+					'aria-haspopup': true,
+				});
+
+				if (!trigger.hasClass('input-localized-trigger')) {
+					listNode.setAttribute('aria-labelledby', trigger.guid());
+				}
+			},
+		};
+
+		Menu.handleFocus = function (id) {
+			const node = A.one(id);
+
+			if (node) {
+				node.delegate(
+					'mouseenter',
+					A.rbind(Menu._targetLink, node, 'focus'),
+					SELECTOR_LIST_ITEM
+				);
+				node.delegate(
+					'mouseleave',
+					A.rbind(Menu._targetLink, node, 'blur'),
+					SELECTOR_LIST_ITEM
+				);
+			}
+		};
+
+		const buffer = [];
+
+		Menu.register = function (id) {
+			const menuNode = document.getElementById(id);
+
+			if (menuNode) {
+				if (!Menu._INSTANCE) {
+					new Menu();
+				}
+
+				buffer.push(menuNode);
+
+				Menu._registerTask();
+			}
+		};
+
+		Menu._registerTask = A.debounce(() => {
+			if (buffer.length) {
+				const nodes = A.all(buffer);
+
+				nodes.on(
+					[EVENT_CLICK, EVENT_KEYDOWN],
+					A.bind('_registerMenu', Menu)
+				);
+
+				buffer.length = 0;
+			}
+		}, 100);
+
+		Menu._targetLink = function (event, action) {
+			const anchor = event.currentTarget.one(SELECTOR_ANCHOR);
+
+			if (anchor) {
+				anchor[action]();
+			}
+		};
+
+		Liferay.provide(
+			Menu,
+			'_getFocusManager',
+			() => {
+				const menuInstance = Menu._INSTANCE;
+
+				const trigger = menuInstance._trigger;
+
+				if (!menuInstance._focusManagerMap) {
+					menuInstance._focusManagerMap = new Map();
+				}
+
+				let focusManager = menuInstance._focusManagerMap.get(
+					trigger.generateID()
+				);
+
+				if (!focusManager) {
+					const bodyNode = menuInstance._overlayMap.get(
+						trigger.generateID()
+					).bodyNode;
+
+					bodyNode.plug(A.Plugin.NodeFocusManager, {
+						circular: true,
+						descendants: 'li:not(.hide) a,input',
+						focusClass: 'focus',
+						keys: {
+							next: 'down:40',
+							previous: 'down:38',
+						},
+					});
+
+					bodyNode.on(
+						'key',
+						() => {
+							const activeTrigger = menuInstance._activeTrigger;
+
+							if (activeTrigger) {
+								menuInstance._closeActiveMenu();
+
+								activeTrigger.focus();
+							}
+						},
+						'down:27,9'
+					);
+
+					focusManager = bodyNode.focusManager;
+
+					bodyNode.delegate(
+						'mouseenter',
+						(event) => {
+							if (focusManager.get('focused')) {
+								focusManager.focus(
+									event.currentTarget.one(SELECTOR_ANCHOR)
+								);
+							}
+						},
+						SELECTOR_LIST_ITEM
+					);
+
+					focusManager.after('activeDescendantChange', (event) => {
+						const descendants = focusManager.get('descendants');
+
+						const selectedItem = descendants.item(event.newVal);
+
+						if (selectedItem) {
+							const overlayList = bodyNode.one('ul');
+
+							if (overlayList) {
+								overlayList.setAttribute(
+									'aria-activedescendant',
+									selectedItem.guid()
+								);
+							}
+						}
+					});
+
+					menuInstance._focusManagerMap.set(
+						trigger.generateID(),
+						focusManager
+					);
+
+					Liferay.once('beforeScreenFlip', () => {
+						menuInstance._focusManagerMap = null;
+
+						menuInstance._trigger = null;
+					});
+				}
+
+				focusManager.refresh();
+			},
+			['node-focusmanager'],
+			true
+		);
+
+		Liferay.provide(
+			Menu,
+			'_getLiveSearch',
+			(_trigger, menu) => {
+				const id = menu.guid();
+
+				let liveSearch = MAP_LIVE_SEARCH[id];
+
+				if (!liveSearch) {
+					const listNode = menu.one('ul');
+
+					const results = [];
+
+					listNode.all('li').each((node) => {
+						results.push({
+							name: node.one('.taglib-text-icon').text().trim(),
+							node,
+						});
+					});
+
+					liveSearch = new Liferay.MenuFilter({
+						content: listNode,
+						menu: Menu._INSTANCE,
+						minQueryLength: 0,
+						queryDelay: 0,
+						resultFilters: 'phraseMatch',
+						resultTextLocator: 'name',
+						source: results,
+					});
+
+					liveSearch.get('inputNode').swallowEvent('click');
+
+					MAP_LIVE_SEARCH[id] = liveSearch;
+				}
+			},
+			['liferay-menu-filter'],
+			true
+		);
+
+		Liferay.provide(
+			Menu,
+			'_registerMenu',
+			(event) => {
+				const key = event.key || event.keyCode;
+
+				if (
+					event.type === EVENT_KEYDOWN &&
+					key !== A.Event.KeyMap.SPACE
+				) {
+					return;
+				}
+
+				const menuInstance = Menu._INSTANCE;
+
+				const handles = menuInstance._handles;
+
+				const trigger = event.currentTarget;
+
+				const activeTrigger = menuInstance._activeTrigger;
+
+				if (activeTrigger) {
+					if (activeTrigger !== trigger) {
+						activeTrigger.removeClass(CSS_BTN_PRIMARY);
+
+						activeTrigger.get(PARENT_NODE).removeClass(CSS_OPEN);
+
+						const portlet = activeTrigger.ancestor(CSS_PORTLET);
+
+						if (portlet) {
+							portlet.removeClass(CSS_OPEN);
+						}
+						menuInstance._closeActiveMenu();
+					}
+					else {
+						menuInstance._closeActiveMenu();
+
+						return;
+					}
+				}
+
+				if (!trigger.hasClass('disabled')) {
+					const menu = menuInstance._getMenu(trigger);
+
+					menuInstance._activeMenu = menu;
+					menuInstance._activeTrigger = trigger;
+
+					trigger.attr({
+						'aria-expanded': true,
+					});
+
+					if (!handles.length) {
+						const listContainer =
+							trigger.getData('menuListContainer');
+
+						A.Event.defineOutside('touchend');
+
+						handles.push(
+							A.getWin().on(
+								'resize',
+								A.debounce(
+									menuInstance._positionActiveMenu,
+									200,
+									menuInstance
+								)
+							),
+							A.getDoc().on(
+								EVENT_CLICK,
+								menuInstance._closeActiveMenu,
+								menuInstance
+							),
+							listContainer.on(
+								'touchendoutside',
+								(event) => {
+									event.preventDefault();
+
+									menuInstance._closeActiveMenu();
+								},
+								menuInstance
+							),
+							Liferay.on('dropdownShow', (event) => {
+								if (event.src !== 'LiferayMenu') {
+									menuInstance._closeActiveMenu();
+								}
+							})
+						);
+
+						const DDM = A.DD && A.DD.DDM;
+
+						if (DDM) {
+							handles.push(
+								DDM.on(
+									'ddm:start',
+									menuInstance._closeActiveMenu,
+									menuInstance
+								)
+							);
+						}
+					}
+
+					menuInstance._positionActiveMenu();
+
+					Liferay.fire('dropdownShow', {
+						src: 'LiferayMenu',
+					});
+
+					event.halt();
+				}
+			},
+			[
+				'aui-widget-cssclass',
+				'event-outside',
+				'event-touch',
+				'widget',
+				'widget-modality',
+				'widget-position',
+				'widget-position-align',
+				'widget-position-constrain',
+				'widget-stack',
+				'widget-stdmod',
+			]
+		);
+
+		Liferay.Menu = Menu;
+	},
+	'',
+	{
+		requires: ['aui-component', 'array-invoke', 'aui-debounce', 'aui-node'],
+	}
+);
+

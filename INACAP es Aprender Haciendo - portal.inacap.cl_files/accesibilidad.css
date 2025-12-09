@@ -1,0 +1,112 @@
+.icon a:hover {
+  cursor: pointer;
+
+
+}
+a#contraste.acces.blanco.navigation.backg:hover{
+color: white;
+
+}
+.logo-blanco{
+  -webkit-filter: brightness(100);
+          filter: brightness(100);
+}
+
+.grises {
+    -webkit-filter: grayscale(1);
+            filter: grayscale(1);
+}
+
+.white{
+  color: white!important;
+}
+
+.black{
+  color: black!important;
+}
+
+.gris{
+  color: #333;
+} 
+
+.fondo,.main .fondo:nth-child(2n){
+  -webkit-filter:grayscale(1);
+          filter:grayscale(1);
+  background-color: black;
+  color: white;
+
+}
+
+.fondoc,.main .fondoc:nth-child(2n){
+  -webkit-filter:grayscale(1);
+          filter:grayscale(1);
+  background-color: white;
+  color: black;
+}
+
+.fondoc .bg-oscuro {
+  background-color: black!important;
+}
+
+.np-navbar-top.fondoc {
+  background-color: black;
+  color: white;
+}
+
+.np-navbar-bottom.fondoc {
+  background-color: black;
+  color: white;
+}
+
+a.currentlyActive{
+  text-decoration: underline;
+}
+
+.fondoc#homeSlider .perc-region{
+  background-color: black;
+}
+
+.fondoc .np-drop-submenu .np-submenu-list a{
+  color: white;
+}
+
+.fondoc .navbar-nav .dropdown-menu .nav-link {
+  color: black;
+}
+
+.fondoc .navbar-nav .np-nav-link-sds.show a {
+  color: black!important;
+}
+
+.fondoc .bg-oscuro .navbar-toggler {
+  background-color: black;
+  color: whitesmoke;
+}
+
+.fondoc .btn-rojo {
+  background-color: black!important;
+  color: #fff!important;
+}
+.fondoc .btn-blanco {
+  background-color: #ffffff!important;
+  color: black!important;
+}
+.fondoc .btn-amarillo {
+  background-color: black!important;
+  color: #fff !important;
+}
+
+.fondoc .btn-negro {
+  background-color: black!important;
+  color: #fff !important;
+}
+
+.fondoc .np-widget-btns .btn-borde-blanco {
+  color: #fff !important;
+}
+
+.fondoc .titulo-blanco {
+  color: #fff !important;
+}
+
+
