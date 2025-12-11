@@ -2564,7 +2564,7 @@ Liferay.on(
  </div>
 </div>
 <div class="layout-content portlet-layout" id="main-content" role="main">
- <div class="lfr-layout-structure-item-1d417bd6-1280-6262-37ba-1a1ada13ef42 lfr-layout-structure-item-container np-headerPortada" style="--background-image-file-entry-id:619025;--lfr-background-image-1d417bd6-1280-6262-37ba-1a1ada13ef42: url(/documents/d/guest/estudiantes-banner-ppal);" id="acbe">
+ <div class="lfr-layout-structure-item-1d417bd6-1280-6262-37ba-1a1ada13ef42 lfr-layout-structure-item-container np-headerPortada" style="--background-image-file-entry-id:619025;--lfr-background-image-1d417bd6-1280-6262-37ba-1a1ada13ef42: url(https://portal.inacap.cl/documents/d/guest/estudiantes-banner-ppal);" id="acbe">
   <style>@media (max-width:300px){#acbe{background-image: url(/o/adaptive-media/image/619025/Thumbnail-300x300/estudiantes-banner-ppal.jpg?t=1717507075765) !important;}}@media (max-width:1000px) and (min-width:300px){#acbe{background-image: url(/o/adaptive-media/image/619025/Preview-1000x0/estudiantes-banner-ppal.jpg?t=1717507075765) !important;}}</style>
   <div class="lfr-layout-structure-item-fa9bf1be-b9c3-ecf2-7a3d-48f32535f13a lfr-layout-structure-item-container contenedor-widget-inst__texto container-fluid container-fluid-max-xl" style="">
    <div class="lfr-layout-structure-item-basic-component-heading lfr-layout-structure-item-1ade6942-b113-117f-e931-8a9c67e8e106 titulo-blanco" style="">
