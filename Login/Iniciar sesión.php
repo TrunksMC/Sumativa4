@@ -154,7 +154,7 @@ InputUtil.updatePlaceholder = function (input, placeholderText) {
 
 
         
-        <link rel="stylesheet" type="text/css" href="./Iniciar sesión_files/style.css"><style>.illustrationClass {background-image:url(/adfs/portal/illustration/illustration.jpg?id=00AD9F61D2AEBE89B7C35FC20B77F16928DBFEFBA7DECD22E19840407B246901);}</style>
+        <link rel="stylesheet" type="text/css" href="./Iniciar sesión_files/style.css"><style>.illustrationClass {background-image:url(https://adfs.inacap.cl/adfs/portal/illustration/illustration.jpg?id=00AD9F61D2AEBE89B7C35FC20B77F16928DBFEFBA7DECD22E19840407B246901);}</style>
 
     </head>
     <body dir="ltr" class="body">
